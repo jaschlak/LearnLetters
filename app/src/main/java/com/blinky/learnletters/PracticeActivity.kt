@@ -4,10 +4,10 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.sight_sound_layout.*
+import kotlinx.android.synthetic.main.practice_layout.*
 import java.util.*
 
-class SightSoundActivity : AppCompatActivity() {
+class PracticeActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
 
@@ -80,7 +80,7 @@ class SightSoundActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sight_sound_layout)
+        setContentView(R.layout.practice_layout)
 
         mediaPlayer = MediaPlayer.create(this, R.raw.a)
         mediaPlayer?.setVolume(1f, 1f)
@@ -108,5 +108,7 @@ class SightSoundActivity : AppCompatActivity() {
     }
 
     }
+
+    fun practiceBackClicked(view: View) {}
 
 }

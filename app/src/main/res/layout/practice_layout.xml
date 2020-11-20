@@ -5,7 +5,7 @@
     android:id="@+id/sightSoundLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SightSoundActivity">
+    tools:context=".PracticeActivity">
 
     <ImageView
         android:id="@+id/letterImageView"
@@ -48,7 +48,6 @@
         android:id="@+id/practiceBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="practiceBackClicked"
         app:srcCompat="@drawable/abc_vector_test"
         tools:layout_editor_absoluteX="13dp"
         tools:layout_editor_absoluteY="20dp" />
