@@ -12,6 +12,7 @@ class PracticeActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
 
     var letter_index = 1
+    var case_selected = "upper"
 
     var lower_image_list = arrayListOf(
         R.drawable.lower_a,
@@ -40,6 +41,35 @@ class PracticeActivity : AppCompatActivity() {
         R.drawable.lower_x,
         R.drawable.lower_y,
         R.drawable.lower_z
+    )
+
+    var upper_image_list = arrayListOf(
+        R.drawable.upper_a,
+        R.drawable.upper_b,
+        R.drawable.upper_c,
+        R.drawable.upper_d,
+        R.drawable.upper_e,
+        R.drawable.upper_f,
+        R.drawable.upper_g,
+        R.drawable.upper_h,
+        R.drawable.upper_i,
+        R.drawable.upper_j,
+        R.drawable.upper_k,
+        R.drawable.upper_l,
+        R.drawable.upper_m,
+        R.drawable.upper_n,
+        R.drawable.upper_o,
+        R.drawable.upper_p,
+        R.drawable.upper_q,
+        R.drawable.upper_r,
+        R.drawable.upper_s,
+        R.drawable.upper_t,
+        R.drawable.upper_u,
+        R.drawable.upper_v,
+        R.drawable.upper_w,
+        R.drawable.upper_x,
+        R.drawable.upper_y,
+        R.drawable.upper_z
     )
 
     var sound_list = arrayListOf(
@@ -73,8 +103,7 @@ class PracticeActivity : AppCompatActivity() {
 
     fun makeLetterIndex():Int {
         val random = Random()
-        val letterIndex = random.nextInt(lower_image_list.count())
-        return letterIndex
+        return random.nextInt(lower_image_list.count())
     }
 
 
@@ -89,6 +118,13 @@ class PracticeActivity : AppCompatActivity() {
         }
     }
 
+    fun upperArrowClicked(view: View){
+        case_selected = "upper"
+    }
+
+    fun lowerArrowClicked(view: View){
+        case_selected = "lower"
+    }
 
      fun clickedPlay(view: View){
          mediaPlayer?.start()
@@ -96,12 +132,18 @@ class PracticeActivity : AppCompatActivity() {
 
     fun practiceNextClicked(view: View){
         var letterIndex = makeLetterIndex()
-        letterImageView.setImageResource(lower_image_list[letterIndex])
+        if (case_selected == "lower"){
+            letterImageView.setImageResource(lower_image_list[letterIndex])
+        }
+        else{
+            letterImageView.setImageResource(upper_image_list[letterIndex])
+        }
         mediaPlayer = MediaPlayer.create(this, sound_list[letterIndex])
         mediaPlayer?.setVolume(1f, 1f)
         mediaPlayer?.setOnPreparedListener {
             println("READY TO GO")
         }
+    }
 
     fun practiceBackClicked(view: View){
         println("Need to go to home screen")
@@ -111,4 +153,3 @@ class PracticeActivity : AppCompatActivity() {
 
     fun practiceBackClicked(view: View) {}
 
-}

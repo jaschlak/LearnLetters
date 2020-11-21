@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/letterImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@drawable/lower_a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +20,8 @@
 
     <Button
         android:id="@+id/playBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:background="@android:drawable/ic_media_play"
         android:onClick="clickedPlay"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,9 +46,33 @@
 
     <ImageButton
         android:id="@+id/practiceBackBtn"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/abc_vector_test"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="20dp" />
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:drawable/arrow_up_float"
+        android:onClick="upperArrowClicked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/letterImageView" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="75dp"
+        android:background="@android:drawable/arrow_down_float"
+        android:onClick="lowerArrowClicked"
+        app:layout_constraintBottom_toBottomOf="@+id/letterImageView"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
