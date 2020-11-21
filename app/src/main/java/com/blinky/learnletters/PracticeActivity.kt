@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.practice_layout.*
 import java.util.*
 
+import android.widget.RelativeLayout
+
 class PracticeActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
 
-    var letter_index = 1
-    var case_selected = "upper"
+    var letter_index = 0
+    var case_selected = "lower"
 
     var lower_image_list = arrayListOf(
         R.drawable.lower_a,
@@ -110,7 +112,7 @@ class PracticeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.practice_layout)
-
+        resizeImageView()
         mediaPlayer = MediaPlayer.create(this, R.raw.a)
         mediaPlayer?.setVolume(1f, 1f)
         mediaPlayer?.setOnPreparedListener {
@@ -120,10 +122,12 @@ class PracticeActivity : AppCompatActivity() {
 
     fun upperArrowClicked(view: View){
         case_selected = "upper"
+        resizeImageView()
     }
 
     fun lowerArrowClicked(view: View){
         case_selected = "lower"
+        resizeImageView()
     }
 
      fun clickedPlay(view: View){
@@ -131,17 +135,39 @@ class PracticeActivity : AppCompatActivity() {
     }
 
     fun practiceNextClicked(view: View){
-        var letterIndex = makeLetterIndex()
+        letter_index = makeLetterIndex()
         if (case_selected == "lower"){
-            letterImageView.setImageResource(lower_image_list[letterIndex])
+            letterImageView.setImageResource(lower_image_list[letter_index])
+
         }
         else{
-            letterImageView.setImageResource(upper_image_list[letterIndex])
+            letterImageView.setImageResource(upper_image_list[letter_index])
+            resizeImageView()
         }
-        mediaPlayer = MediaPlayer.create(this, sound_list[letterIndex])
+        mediaPlayer = MediaPlayer.create(this, sound_list[letter_index])
         mediaPlayer?.setVolume(1f, 1f)
         mediaPlayer?.setOnPreparedListener {
             println("READY TO GO")
+        }
+    }
+
+    fun resizeImageView(){
+        if (case_selected == "upper") {
+            letterImageView.requestLayout()
+            letterImageView.setImageResource(upper_image_list[letter_index])
+            letterImageView.getLayoutParams().height = 1200
+            letterImageView.getLayoutParams().width = 1200
+            letterImageView.setScaleType(letterImageView.scaleType)
+            letterImageView.setImageResource(upper_image_list[letter_index])
+
+        }
+        else {
+            letterImageView.requestLayout()
+            letterImageView.setImageResource(upper_image_list[letter_index])
+            letterImageView.getLayoutParams().height = 800
+            letterImageView.getLayoutParams().width = 800
+            letterImageView.setScaleType(letterImageView.scaleType)
+            letterImageView.setImageResource(lower_image_list[letter_index])
         }
     }
 
